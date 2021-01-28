@@ -4,18 +4,6 @@ namespace GFLib.Pokemon;
 
 file_extension "gfbpokecfg";
 
-enum Size: uint8 {
-  SIZE_S = 0,
-  SIZE_M = 1,
-  SIZE_L = 2,
-  SIZE_LL = 3,
-}
-
-enum SpeciesParamType: uint8 {
-  species_value = 0,
-  per_rand = 1
-}
-
 table meshProperty {
   isVisible:bool = 0;
   meshName:string;

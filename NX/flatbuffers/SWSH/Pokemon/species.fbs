@@ -10,6 +10,28 @@ enum SpeciesParamType: uint8 {
   per_rand = 1
 }
 
+enum FormID : uint16 {
+  FORM_DEFAULT = 0,
+  FORM_GENDERED,
+  FORM_ONE = 11,
+  FORM_TWO,
+  FORM_THREE,
+  FORM_FOUR,
+  FORM_FIVE,
+  FORM_SIX,
+  FORM_SEVEN,
+  FORM_EIGHT,
+  FORM_NINE,
+  FORM_TEN = 20,
+  FORM_ELEVEN,
+  FORM_TWELVE,
+  FORM_THIRTEEN,
+  FORM_FOURTEEN,
+  FORM_FIFTEEN,
+  FORM_ALOLA = 61,
+  FORM_GMAX = 81,
+}
+
 enum SpeciesType: uint8 {
   RG_SERIES = 0,
   GS_SERIES,

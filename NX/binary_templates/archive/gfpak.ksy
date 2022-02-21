@@ -35,6 +35,7 @@ enums:
     0: none
     1: zlib
     2: lz4
+    3: oodle
 types:
     header:
       seq:
@@ -59,16 +60,16 @@ types:
           type: u4
         - id: len_compressed
           type: u4
-        - id: reserved_1
+        - id: reserved
           type: u4
         - id: ofs_file
-          type: u4
-        - id: reserved_2
-          type: u4
+          type: u8
+
       instances:
         file:
           pos: ofs_file
           size: len_compressed
+
     folderhash:
       seq:
         - id: hash

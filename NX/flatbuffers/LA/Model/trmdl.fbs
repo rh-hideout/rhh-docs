@@ -1,0 +1,36 @@
+file_extension "trmdl";
+
+struct Vec4 {
+  x:float;
+  y:float;
+  z:float;
+  w:float;
+}
+
+table trmeshes {
+  filename: string;
+}
+
+table trskeleton {
+  filename: string;
+}
+
+table LodIndex {
+  unk0: uint32 = 0;
+}
+
+table Lod {
+  index: [LodIndex];
+  lod_type: string;
+}
+
+table TRMDL {
+    unk0:uint32;
+    meshes:[trmeshes];
+    skeleton:trskeleton;
+    textures:[string];
+    lods:[Lod];
+    someVec:Vec4;
+}
+
+root_type TRMDL;

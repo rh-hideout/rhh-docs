@@ -1,0 +1,21 @@
+file_extension "trmbf";
+
+table index_list {
+    list:[ubyte];
+}
+
+table vertex_list {
+    list: [ubyte];
+}
+
+table Polygon {
+    poly_indexes: [index_list];
+    poly_vertices: [vertex_list];
+}
+
+table TRMBF {
+    unused: uint32;
+    polygons:[Polygon];
+}
+
+root_type TRMBF;

@@ -1,0 +1,98 @@
+file_extension "trmsh";
+
+enum Attribute : uint32 {
+    UNKNOWN = 0,
+    POSITION = 1, //Always type 51
+    TEXCOORD_0 = 2,
+    NORMAL = 3,
+    COLOR = 5, //Always type 20 or 54
+    UNKNOWN_6 = 6,
+    GROUP_IDX = 7, //Always type 22
+    GROUP_WEIGHT = 8, //Always type 39
+}
+
+enum Type: uint32 {
+    UNKNOWN = 0,
+    UINT32 = 20, //len 0x4, always attribute 5 r8b8g8a8
+    UNKNOWN_22 = 22,//len 0x4, always attribute 7
+    UNKNOWN_39 = 39,//len 0x4, always attribute 8
+    UNKNOWN_43 = 43, //len 0x8, always attribute 2 and 3
+    UNKNOWN_48 = 48, //len 0x8, alwlays attribute 6
+    VEC3 = 51, //len 0xC, always attribute 1
+    VEC4 = 54, //len 0x10, always attribute 5 rfbfgfaf
+
+}
+
+struct Vec4 {
+    w:float;
+    x:float;
+    y:float;
+    z:float;
+}
+
+struct Vec3 {
+    x:float;
+    y:float;
+    z:float;
+}
+
+table BoundingBox {
+    min: Vec3;
+    max: Vec3;
+}
+
+table Influence {
+    //TODO: Fuck around with this value
+    index: uint32;
+    scale: float;
+}
+
+table VertexAttribute {
+    attr_0: uint32 = 0; //Always 0
+    attribute: Attribute = 0; //Some_Enum
+    attr_2: uint32 = 0; //Either 0 or 1 when Attribute is 3 or 6
+    type: Type = 0;
+    position: uint32 = 0;
+}
+
+table VertexSize {
+    size: uint32;
+}
+
+table VertexAttributes {
+    attrs: [VertexAttribute];
+    size: [VertexSize];
+}
+
+table Shape {
+    some_count: uint32;
+    some_offset: uint32;
+    sh_unk3: uint32;
+    shape_name: string;
+    sh_unk4: uint32;
+}
+
+table MeshShape {
+    mesh_shape_name: string;
+    bounds: BoundingBox;
+    sort_priority: uint32 = 0; //Always 1?
+    attributes: [VertexAttributes];
+    shape: [Shape];
+    //Always zero for these four
+    res0: uint32 = 0;
+    res1: uint32 = 0;
+    res2: uint32 = 0;
+    res3: uint32 = 0;
+    mesh_vec: Vec4;
+    influence: [Influence];
+    mesh_unk7: [uint32]; // Always empty
+    mesh_name: string;
+}
+
+table TRMSH {
+    unk0: uint32;
+    meshes:[MeshShape];
+    buffer_name:string;
+}
+
+root_type TRMSH;

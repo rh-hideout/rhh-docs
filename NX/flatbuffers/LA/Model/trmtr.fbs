@@ -1,0 +1,114 @@
+file_extension "trmtr";
+
+struct RGBA {
+        r: float;
+        g: float;
+        b: float;
+        a: float;
+}
+
+enum UVWrapMode: uint32 {
+  WRAP = 0,
+  CLAMP = 1,
+  MIRROR = 2,
+  BORDER = 3,
+}
+
+//Elements at pos 0x1fc
+table SamplerState {
+        SamplerState_0: uint32; //Always 0
+        SamplerState_1: uint32; //Always 0
+        SamplerState_2: uint32; //Always 0
+        SamplerState_3: uint32; //Always 0
+        SamplerState_4: uint32; //Always 0
+        SamplerState_5: uint32; //Always 0
+        SamplerState_6: uint32; //Always 0
+        SamplerState_7: uint32; //Always 0
+        SamplerState_8: uint32; //Always 0
+        repeat_u: UVWrapMode; //Value 0 or 1
+        repeat_v: UVWrapMode; //Value 0 or 1
+        repeat_2: UVWrapMode; //Always 0
+        border_color: RGBA; //Value 0
+        mip_map_bias: float;
+}
+
+table UnkValue {
+        unk_name: string;
+        unk_value: uint32;
+}
+
+//Elements at pos 0x114
+table ColorValue {
+        color_name: string;
+        color_value: RGBA; 
+}
+
+
+table FloatValue {
+        float_name: string;
+        float_value: float;
+}
+
+//Elements at pos 0xa8
+table IntValue {
+        int_name: string; //Value (8,)
+        int_value: uint32; //Value (6,)
+}
+
+//Elements at pos 0x478
+table StringValue {
+        string_name: string; //Value (20,)
+        string_value: string; //Value (4,)
+}
+
+
+//Elements at pos 0x438
+table Shader {
+        shader_type: string; //Value (628,)
+        shader_flags: [StringValue]; //Value (4,)
+}
+
+//Elements at pos 0x2c0
+table Map{
+        map_name: string; //Value (40,)
+        map_file: string; //Value (8,)
+        map_slot: uint32; //Value (5,)
+}
+
+//Elements at pos 0x88
+table UnkTable_13{
+        res_0: uint32;
+}
+
+//Elements at pos 0x84
+table UnkTable_14{
+        res_0: uint32;
+}
+
+//Elements at pos 0x34
+table Material{
+        name: string; //Value (1672,)
+        flags: [Shader]; //Value (1012,)
+        textures: [Map]; //Value (612,)
+        SamplerStates: [SamplerState]; //Value (412,)
+        float_values: [FloatValue]; //Value (300,)
+        unk_5: [uint32]; //Value (292,)
+        unk_6: [uint32]; //Value (284,)
+        color_values: [ColorValue]; //Value (180,)
+        unk_8: [uint32]; //Value (172,)
+        int_values: [IntValue]; //Value (60,)
+        unk_10: [uint32]; //Value (52,)
+        unk_11: [uint32]; //Value (44,)
+        unk_12: [uint32]; //Value (36,)
+        unk_13: UnkTable_13; //Value (28,)
+        unk_14: UnkTable_14; //Value (20,)
+        alpha_type: string; //Value (4,)
+}
+
+
+table TRMTR{
+        res_0: uint32; //Value 0
+        materials: [Material]; //Value ()
+}
+
+root_type TRMTR;

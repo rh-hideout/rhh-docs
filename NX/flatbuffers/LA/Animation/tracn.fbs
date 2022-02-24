@@ -1,0 +1,10 @@
+table AnimationEntry{
+        animation_name: string;
+        animation_file: string;
+}
+
+table TRACN {
+    list: [AnimationEntry];
+}
+
+root_type TRACN;

@@ -12,6 +12,7 @@ enum UVWrapMode: uint32 {
   CLAMP = 1,
   MIRROR = 2,
   BORDER = 3,
+  MIRROR_ONCE = 4,
 }
 
 //Elements at pos 0x1fc
@@ -25,9 +26,9 @@ table SamplerState {
         SamplerState_6: uint32; //Always 0
         SamplerState_7: uint32; //Always 0
         SamplerState_8: uint32; //Always 0
-        repeat_u: UVWrapMode; //Value 0 or 1
-        repeat_v: UVWrapMode; //Value 0 or 1
-        repeat_2: UVWrapMode; //Always 0
+        repeat_u: UVWrapMode;
+        repeat_v: UVWrapMode;
+        repeat_2: UVWrapMode;
         border_color: RGBA; //Value 0
         mip_map_bias: float;
 }

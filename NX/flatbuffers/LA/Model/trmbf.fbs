@@ -1,16 +1,16 @@
 file_extension "trmbf";
 
-table index_list {
+table Indexes {
     list:[ubyte];
 }
 
-table vertex_list {
+table Vertices {
     list: [ubyte];
 }
 
 table Polygon {
-    poly_indexes: [index_list];
-    poly_vertices: [vertex_list];
+    index_buffer: [Indexes];
+    vertex_buffer: [Vertices];
 }
 
 table TRMBF {

@@ -1,0 +1,38 @@
+struct Vec4 {
+    x: float;
+    y: float;
+    z: float;
+    w: float;
+}
+
+table BoundMatrix {
+    x: Vec4;
+    y: Vec4;
+    z: Vec4;
+}
+
+table FloatParameter {
+    param_name: string;
+    param_val: float; 
+}
+
+table MapFile {
+    map_name: string;
+    map_file: string;
+}
+
+table HeightField {
+    fieldtype: string;
+    filename: string;
+    bounds: BoundMatrix;
+    float_params: [FloatParameter];
+    unk_params: [uint32];
+    file_params: [MapFile];
+}
+
+table TRHF{
+    res_0: uint32 = 0x0;
+    heightfields: [HeightField];
+}
+
+root_type TRHF;

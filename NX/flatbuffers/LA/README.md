@@ -20,5 +20,11 @@ Still using flatbuffers!
     - Very Incomplete
     - Defines how trainers procedurally look at you when nearby
 
+`field`
+- [x] TRTRR - Terrain Resource
+    - Also references TRMBF and TRMTR for Splatmap/Geometry Buffer 
+- [x] TRINS - Terrain Instance
+- [x] TRHF - Terrain HeightField
+
 `pml::personal`
 - [] Personal Data

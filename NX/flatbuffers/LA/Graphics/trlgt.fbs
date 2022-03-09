@@ -11,28 +11,33 @@ table BoundMatrix {
     z: Vec4;
 }
 
+table Vec4Parameter {
+    param_name: string;
+    value: Vec4;
+}
+
 table FloatParameter {
     param_name: string;
     param_val: float; 
 }
 
-table MapFile {
+table StringParameter {
     map_name: string;
     map_file: string;
 }
 
-table HeightField {
-    fieldtype: string;
-    filename: string;
-    bounds: BoundMatrix;
+table Light {
+    light_type: string;
+    light_name: string;
+    light_matrix: BoundMatrix;
     float_params: [FloatParameter];
-    unk_params: [uint32];
-    file_params: [MapFile];
+    vec4_params: [Vec4Parameter];
+    string_params: [StringParameter];
 }
 
-table TRHF{
+table TRLGT{
     res_0: uint32 = 0x0;
-    heightfields: [HeightField];
+    lights: [Light];
 }
 
-root_type TRHF;
+root_type TRLGT;

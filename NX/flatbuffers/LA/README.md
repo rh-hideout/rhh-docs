@@ -8,16 +8,18 @@ Still using flatbuffers!
 - [x] TRMTR - Material
 - [x] TRMBF - MeshBuffer
 - [x] TRSKL - Skeleton
-- [ ] TRPOKECFG - Pokemon Config (Inframe related)
+- [x] TRPOKECFG - Pokemon Config (Inframe related)
 
 `gfl::anm2`
+- [x] TRANM - Animation
+- [x] TRAEF - Animation Effects
 - [x] TRACN - Animation Channel Names
 - [x] TRACL - Animation Channel Layer
-- [ ] TRACS - Animation Channel State
+- [x] TRACS - Animation Channel State
 - [x] TRACP - Animation Channel Parameter
-- [ ] TRSPB - Animation Spring Bone
-- [ ] TRBIK - Animation Biped IK
-- [ ] TRALK - Animation LookAt, 
+- [x] TRSPB - Animation Spring Bone
+- [x] TRBIK - Animation Biped IK
+- [x] TRALK - Animation LookAt
     - Very Incomplete
     - Defines how trainers procedurally look at you when nearby
 
@@ -25,6 +27,7 @@ Still using flatbuffers!
 - [x] TRTRR - Terrain Resource
     - Also references TRMBF and TRMTR for Splatmap/Geometry Buffer 
 - [x] TRINS - Terrain Instance
+    - Requires parsing after conversion...
 - [ ] TRHF - Terrain HeightField
 - [ ] TRCOL - Terrain Collision
 
@@ -33,10 +36,10 @@ Still using flatbuffers!
 
 `pml`
 - [ ] Personal Data
-- [ ] trloc
-- [ ] trpmcatalog
+- [ ] TRLOC
+- [ ] TRPMCATALOG
 
 `unk`
-- [ ] trfmd
-- [ ] trpfd
+- [ ] TRFMD
+- [ ] TRPFD
 

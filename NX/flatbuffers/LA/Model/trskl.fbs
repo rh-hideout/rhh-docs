@@ -20,57 +20,57 @@ struct Vec4 {
 }
 
 enum BoneType: uint32 {
-        Transform = 0, //Commonly used now, suspect flattened rigs
-        Joint = 1, //Used for IK affected bones
-        Locator = 2, //Unused for IK driver bones
-        Transparency_Group = 3, //Used for Transparency
+    Transform = 0,
+    Joint = 1,
+    Locator = 2,
+    Transparency_Group = 3,
 }
 
 table BoneTransform{
-        VecScale: Vec3;
-        VecRot: Vec3;
-        VecTranslate: Vec3;
+    VecScale: Vec3;
+    VecRot: Vec3;
+    VecTranslate: Vec3;
 }
 
 table Bone{
-        name: string;
-        transform: BoneTransform;
-        VecScalePivot: Vec3;
-        VecRotatePivot: Vec3;
-        parent_idx: uint32;
-        this_idx: uint32;
-        unk_6: [uint32]; //Always Empty Vec
-        type: BoneType; //Probably some enum, values are 0,1,2
+    name: string;
+    transform: BoneTransform;
+    VecScalePivot: Vec3;
+    VecRotatePivot: Vec3;
+    parent_idx: uint32;
+    this_idx: uint32;
+    unk_6: [uint32]; //Always Empty Vec
+    type: BoneType; //Probably some enum, values are 0,1,2
 }
 
 table IKControl{
-        ik_name: string;
-        ik_chain_start: string;
-        ik_chain_end: string;
-        ik_type: string;
-        res_4: uint32; //Always 0
-        ik_pos: Vec3;
-        ik_rot: Vec4;
+    ik_name: string;
+    ik_chain_start: string;
+    ik_chain_end: string;
+    ik_type: string;
+    res_4: uint32; //Always 0
+    ik_pos: Vec3;
+    ik_rot: Vec4;
 }
 
-table UnkTransform{
-        unk_0: Vec3;
-        unk_1: Vec3;
-        unk_2: Vec3;
-        unk_3: Vec3;
+table UnkTransform {
+    unk_0: Vec3;
+    unk_1: Vec3;
+    unk_2: Vec3;
+    unk_3: Vec3;
 }
 
-table UnkInitTransform{
-        unk_bool: uint8; //Value (0,1) Probably SegmentScaleCompensate?
-        unk_bool_2: uint8; //Probably an Enum, need to test more trskl
-        unk_transform: UnkTransform;
+table UnkInitTransform {
+    unk_bool: uint8; //Value (0,1) Probably SegmentScaleCompensate?
+    unk_bool_2: uint8; //Probably an Enum, need to test more trskl
+    unk_transform: UnkTransform;
 }
 
 table TRSKL {
-        res_0: uint32;
-        bones: [Bone];
-        bones_data: [UnkInitTransform];
-        iks: [IKControl];
+    res_0: uint32;
+    bones: [Bone];
+    bones_data: [UnkInitTransform];
+    iks: [IKControl];
 }
 
 root_type TRSKL;

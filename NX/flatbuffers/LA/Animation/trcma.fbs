@@ -1,0 +1,84 @@
+struct Vec3 {
+    x: float; 
+    y: float;
+    z: float;
+}
+
+union VectorTrack { FixedVectorTrack, DynamicVectorTrack,  Framed16VectorTrack, Framed8VectorTrack }
+
+table FixedVectorTrack {
+  co: Vec3;
+}
+
+table DynamicVectorTrack {
+  co: [Vec3];
+}
+
+table Framed16VectorTrack {
+  frames:[uint16];
+  co: [Vec3];
+}
+
+table Framed8VectorTrack {
+  frames:[uint8];
+  co:[Vec3];
+}
+
+
+union FloatTrack {
+    FixedFloatTrack,
+    DynamicFloatTrack,
+    Framed16FloatTrack,
+    Framed8FloatTrack,
+}
+
+table FixedFloatTrack {
+    value: float;
+}
+
+table DynamicFloatTrack {
+    value: [float];
+}
+
+table Framed16FloatTrack {
+    frames:[uint16];
+    value:[float];
+}
+
+table Framed8FloatTrack {
+    frames:[uint8];
+    value:[float];
+}
+
+table AnimationInfo {
+    res_0: uint32;
+    duration: uint32;
+    framerate: uint32;
+}
+
+table CameraAnim1 {
+    unk_0: FloatTrack;
+    unk_1: FloatTrack;
+    unk_2: FloatTrack;
+}
+
+table CameraAnim2 {
+    unk_0: VectorTrack;
+    unk_1: VectorTrack;
+    unk_2: VectorTrack;
+    unk_3: VectorTrack;
+    unk_4: VectorTrack;
+}
+
+table CamAnimation {
+    cam_name: string;
+    anim1: CameraAnim1;
+    anim2: CameraAnim2;
+}
+
+table TRCMA {
+    info: AnimationInfo;
+    anim: CamAnimation;
+}
+
+root_type TRCMA;

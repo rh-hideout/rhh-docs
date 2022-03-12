@@ -13,6 +13,7 @@ Still using flatbuffers!
 `gfl::anm2`
 - [x] TRANM - Animation
 - [x] TRAEF - Animation Effects
+- [x] TRCMA - Camera Animation
 - [x] TRACN - Animation Channel Names
 - [x] TRACL - Animation Channel Layer
 - [x] TRACS - Animation Channel State

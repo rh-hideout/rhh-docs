@@ -35,6 +35,10 @@ Still using flatbuffers!
 `gfx2`
 - [x] TRLGT - Light
 
+`npc`
+- [x] TRBSM - Bone, Scaler, Meshes? 
+    - Related to CC folder, need to investigate more
+
 `pml`
 - [ ] Personal Data
 - [ ] TRLOC

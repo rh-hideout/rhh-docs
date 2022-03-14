@@ -9,6 +9,8 @@ Still using flatbuffers!
 - [x] TRMBF - MeshBuffer
 - [x] TRSKL - Skeleton
 - [x] TRPOKECFG - Pokemon Config (Inframe related)
+- [ ] TRLOC - Defines Locators for spawning attacks
+    - Previously inside gfbmdl's rigs
 
 `gfl::anm2`
 - [x] TRANM - Animation
@@ -37,14 +39,23 @@ Still using flatbuffers!
 - [x] TRSHA - Shader Slot Configuration
 - [x] TRTCH - Shader Technique (?)
 
+`placement`
+- [x] NpcModelSet - Defines models, animations, skeleton and colors per npc
+    - Some hashes in here might reveal prototype names, maybe try bruteforcing them?
+
 `npc`
 - [x] TRBSM - Bone, Scaler, Meshes? 
     - Related to CC folder, need to investigate more
 
-`pml`
-- [ ] Personal Data
-- [ ] TRLOC
+`pokemon`
 - [ ] TRPMCATALOG
+
+`pml`
+- [x] Personal
+    - Investigate unknown fields for mega-evolution or z-moves, weird stuff in there
+- [ ] Waza (Attacks)
+- [ ] Waza Oboe (Egg Moves)
+- [ ] Evolution
 
 `unk`
 - [ ] TRFMD

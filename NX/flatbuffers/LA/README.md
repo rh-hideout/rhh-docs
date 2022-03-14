@@ -48,7 +48,7 @@ Still using flatbuffers!
     - Related to CC folder, need to investigate more
 
 `pokemon`
-- [ ] TRPMCATALOG
+- [x] TRPMCATALOG
 
 `pml`
 - [x] Personal

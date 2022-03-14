@@ -1,0 +1,27 @@
+table BoolProperty {
+        name: string;
+        value: uint32;
+}
+
+table SHA_Slot {
+    slot_name: string;
+    bool_slots: [BoolProperty];
+    bool_1: uint8;
+    bool_2: uint8;
+    bool_3: uint8;
+    bool_4: uint8;
+    slot_index: uint32;
+}
+
+
+table TRSHA {
+    name: string;
+    file_name: string;
+    unk_2: [SHA_Slot];
+    unk_3: [SHA_Slot];
+    unk_4: [uint32];
+    unk_5: bool;
+    unk_6: bool;
+}
+
+root_type TRSHA;

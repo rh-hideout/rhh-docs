@@ -34,6 +34,7 @@ Still using flatbuffers!
 
 `gfx2`
 - [x] TRLGT - Light
+- [x] TRSHA - Shader Slot Configuration
 
 `npc`
 - [x] TRBSM - Bone, Scaler, Meshes? 

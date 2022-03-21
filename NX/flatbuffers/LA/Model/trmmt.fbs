@@ -1,0 +1,19 @@
+table MaterialIndex {
+    material_name: string;
+    material_index: uint8;
+}
+
+table MMT {
+    name: string;
+    material_name: string;
+    material_switches: [MaterialIndex];
+    unk3: string;
+} 
+
+table TRMMT {
+        res_0: uint32;
+        res_1: uint32;
+        unk_2: [MMT];
+}
+
+root_type TRMMT;

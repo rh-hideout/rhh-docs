@@ -8,37 +8,31 @@ struct RGBA {
 }
 
 enum UVWrapMode: uint32 {
-  WRAP = 0,
-  CLAMP = 1,
-  MIRROR = 2,
-  BORDER = 3,
-  MIRROR_ONCE = 4,
+        WRAP = 0,
+        CLAMP = 1,
+        MIRROR = 2,
+        BORDER = 3,
+        MIRROR_ONCE = 4,
+        UNK6 = 6,
+        UNK7 = 7,
 }
 
-//Elements at pos 0x1fc
 table SamplerState {
-        SamplerState_0: uint32; //Always 0
-        SamplerState_1: uint32; //Always 0
-        SamplerState_2: uint32; //Always 0
-        SamplerState_3: uint32; //Always 0
-        SamplerState_4: uint32; //Always 0
-        SamplerState_5: uint32; //Always 0
-        SamplerState_6: uint32; //Always 0
-        SamplerState_7: uint32; //Always 0
-        SamplerState_8: uint32; //Always 0
-        repeat_u: UVWrapMode;
-        repeat_v: UVWrapMode;
-        repeat_2: UVWrapMode;
-        border_color: RGBA; //Value 0
-        mip_map_bias: float;
+        SamplerState_0: uint32 = 0x0; //Never used
+        SamplerState_1: uint32 = 0x0; //Never used
+        SamplerState_2: uint32 = 0x0; //Never used
+        SamplerState_3: uint32 = 0x0; //Never used
+        SamplerState_4: uint32 = 0x0; //Never used
+        SamplerState_5: uint32 = 0x0; //Never used
+        SamplerState_6: uint32 = 0x0; //Never used
+        SamplerState_7: uint32 = 0x0; //Never used
+        SamplerState_8: uint32 = 0x0; //Never used
+        repeat_u: UVWrapMode = WRAP; //0x1, 0x6 or 0x7
+        repeat_v: UVWrapMode = WRAP; //0x1, 0x6 or 0x7
+        repeat_w: UVWrapMode = WRAP; //Never used
+        border_color: RGBA;
 }
 
-table UnkValue {
-        unk_name: string;
-        unk_value: uint32;
-}
-
-//Elements at pos 0x114
 table ColorValue {
         color_name: string;
         color_value: RGBA; 
@@ -50,66 +44,62 @@ table FloatValue {
         float_value: float;
 }
 
-//Elements at pos 0xa8
 table IntValue {
-        int_name: string; //Value (8,)
-        int_value: uint32; //Value (6,)
+        int_name: string;
+        int_value: uint32;
 }
 
-//Elements at pos 0x478
 table StringValue {
-        string_name: string; //Value (20,)
-        string_value: string; //Value (4,)
+        string_name: string;
+        string_value: string;
 }
 
-
-//Elements at pos 0x438
 table Shader {
-        shader_type: string; //Value (628,)
-        shader_flags: [StringValue]; //Value (4,)
+        shader_name: string;
+        shader_values: [StringValue];
 }
 
-//Elements at pos 0x2c0
-table Map{
-        map_name: string; //Value (40,)
-        map_file: string; //Value (8,)
-        map_slot: uint32; //Value (5,)
+table Texture  {
+        texture_name: string;
+        texture_file: string;
+        texture_slot: uint32;
 }
 
-//Elements at pos 0x88
-table UnkTable_13{
-        res_0: uint32;
+table ByteTable {
+        value: uint8 = 0x2; //Only pm0448 has it as 0x1
 }
 
-//Elements at pos 0x84
-table UnkTable_14{
-        res_0: uint32;
+table IntTable {
+        res_0: uint32; //Never present
+        unk_1: uint32 = 0x2;
 }
 
-//Elements at pos 0x34
+table DummyTable {
+
+}
+
 table Material{
-        name: string; //Value (1672,)
-        flags: [Shader]; //Value (1012,)
-        textures: [Map]; //Value (612,)
-        SamplerStates: [SamplerState]; //Value (412,)
-        float_values: [FloatValue]; //Value (300,)
-        unk_5: [uint32]; //Value (292,)
-        unk_6: [uint32]; //Value (284,)
-        color_values: [ColorValue]; //Value (180,)
-        unk_8: [uint32]; //Value (172,)
-        int_values: [IntValue]; //Value (60,)
-        unk_10: [uint32]; //Value (52,)
-        unk_11: [uint32]; //Value (44,)
-        unk_12: [uint32]; //Value (36,)
-        unk_13: UnkTable_13; //Value (28,)
-        unk_14: UnkTable_14; //Value (20,)
-        alpha_type: string; //Value (4,)
+        name: string; 
+        shaders: [Shader]; 
+        textures: [Texture];
+        samplers: [SamplerState]; 
+        float_values: [FloatValue];
+        unk_5: string; //Always empty
+        light: [ColorValue];
+        color: [ColorValue];
+        unk_8: string; //Always empty
+        int_values: [IntValue];
+        unk_10: string; //Always empty
+        unk_11: string; //Always empty
+        unk_12: string; //Always empty
+        byte_value: ByteTable;
+        uint_value: IntTable;
+        alpha_type: string;
 }
-
 
 table TRMTR{
-        res_0: uint32; //Value 0
-        materials: [Material]; //Value ()
+        res_0: uint32;
+        materials: [Material];
 }
 
 root_type TRMTR;

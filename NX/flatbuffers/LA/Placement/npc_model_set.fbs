@@ -27,9 +27,9 @@ table ColorConfig {
 }
 
 table Set {
-    npc_hash: uint64; //Might not match npc name from meshes
+    npc_hash: uint64;
     npc_index: string;
-    unk_hash: uint64;
+    unk_set_2: uint64;
     anims: Animations;
     meshes: Meshes;
     rigs: Rigs;
@@ -38,9 +38,9 @@ table Set {
     attachment_2: string;
     colors: ColorConfig;
     value_list_id: string;
-    slot_order: [uint32];
+    unk_set_11: [uint32];
     archive_path: string;
-    unk_float: float; //Sometimes it appears, doesn't seem to affect much
+    unk_float: float;
 }
 
 table NPCModelSet {

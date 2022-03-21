@@ -27,6 +27,13 @@ enum Type: uint32 {
     W32_X32_Y32_Z32_FLOAT = 54,
 }
 
+enum PolygonType: uint32 {
+    X8_Y8_Z8_UNSIGNED = 0,
+    X16_Y16_Z16_UNSIGNED,
+    X32_Y32_Z32_UNSIGNED,
+    X64_Y64_Z64_UNSIGNED,
+}
+
 struct Vec4 {
     w:float;
     x:float;
@@ -52,7 +59,7 @@ table Influence {
 }
 
 table VertexAttribute {
-    attr_0: uint32 = 0; //Always 0
+    attr_0: uint32 = 0;
     attribute: Attribute = 0;
     attribute_layer: uint32 = 0; //Chooses which Color or UV layer to use
     type: Type;
@@ -68,20 +75,20 @@ table VertexAttributes {
     size: [VertexSize];
 }
 
-table Shape {
-    poly_count: uint32; //Always off by two
+table MaterialInfo {
+    poly_count: uint32;
     poly_offset: uint32;
     sh_unk3: uint32;
-    shape_name: string;
+    material_name: string;
     sh_unk4: uint32;
 }
 
 table MeshShape {
     mesh_shape_name: string;
     bounds: BoundingBox;
-    sort_priority: uint32 = 0; //Always 1?
+    polygon_type: PolygonType;
     attributes: [VertexAttributes];
-    shape: [Shape];
+    materialinfo: [MaterialInfo];
     //Always zero for these four
     res0: uint32 = 0;
     res1: uint32 = 0;
@@ -89,7 +96,7 @@ table MeshShape {
     res3: uint32 = 0;
     mesh_vec: Vec4;
     influence: [Influence];
-    mesh_unk7: [uint32]; // Always empty
+    mesh_unk7: string; // Maybe shape name?
     mesh_name: string;
 }
 

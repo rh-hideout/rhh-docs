@@ -32,7 +32,6 @@ Still using flatbuffers!
 - [x] TRINS - Terrain Instance
     - Requires parsing after conversion...
 - [ ] TRHF - Terrain HeightField
-- [ ] TRCOL - Terrain Collision
 
 `gfx2`
 - [x] TRLGT - Light

@@ -213,18 +213,18 @@ table ParticleCreate {
 }
 //cmn_battle_table Waza_pow_start.wbin
 //Object at 0xa3c ends at 0xa48
-table WazaCommand0x3 {
+table WazaCommand0x3 { //Maybe Particle Stop
     start_frame: uint32;
     end_frame: uint32;
 }
 //cmn_battle_start_ns.wbin
 //Object at 0x55c ends at 0x568
-table WazaCommand0x4 {
+table WazaCommand0x4 { //Maybe Particle Delete
     start_frame: uint32;
     end_frame: uint32;
 }
 //Not present
-table WazaCommand0x5 {
+table WazaCommand0x5 { //Maybe Particle MovePosition
     start_frame: uint32;
     end_frame: uint32;
 }
@@ -464,7 +464,7 @@ table WazaCommand0x1a {
 table WazaCommand0x1b {
     start_frame: uint32;
     end_frame: uint32;
-    res_2: uint8;
+    unk_2: uint8;
     unk_3: uint8;
 }
 //cmn_battle_start_ns.wbin
@@ -793,18 +793,7 @@ table WazaCommand0x60 {
     unk_8: ByteRGB;
     unk_9: ByteRGB;
 }
-//cmn_battle_start_ns.wbin
-//Object at 0x9f4 ends at 0xa0c
-table WazaCommand0x5d {
-    start_frame: uint32;
-    end_frame: uint32;
-    unk_2: uint8;
-    unk_3: uint8;
-    unk_4: uint8;
-    unk_5: uint32;
-    unk_6: uint8;
-    unk_7: float;
-}
+
 //cmn_battle_start_ns.wbin
 //Object at 0x9c4 ends at 0x9d4
 table WazaCommand0x66 {
@@ -921,7 +910,7 @@ table WazaCommand0x59 {
 table WazaCommand0x61 {
     start_frame: uint32;
     end_frame: uint32;
-    res_2: uint32;
+    res_2: uint8;
     unk_3: uint8;
     unk_4: Vec3;
     unk_5: Vec3;
@@ -959,6 +948,18 @@ table WazaCommand0x5a {
     end_frame: uint32;
     unk_2: uint8;
     unk_3: uint8;
+}
+//cmn_battle_start_ns.wbin
+//Object at 0x9f4 ends at 0xa0c
+table WazaCommand0x5d {
+    start_frame: uint32;
+    end_frame: uint32;
+    unk_2: uint8;
+    unk_3: uint8;
+    unk_4: uint8;
+    unk_5: uint32;
+    unk_6: uint8;
+    unk_7: float;
 }
 //cmn_battle_table Waza_pow_start.wbin
 //Object at 0x254 ends at 0x25c

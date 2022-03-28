@@ -1,0 +1,45 @@
+enum TypeInfo: uint8 {
+    UNKNOWN = 0,
+    TRANSFORM = 1,
+    VISIBILITY = 8,
+}
+
+table ANMNode {
+    type_name: string;
+    type_info1: TypeInfo;
+    type_info2: uint8;
+    count: uint32;
+    res_4: uint32;
+    buffer_off: uint32;
+    buffer_size: uint32;
+}
+
+table ANMBone {
+    bone_name: string;
+    bone_entries: [ANMNode];
+}
+
+table ANMBBuffer {
+    bytes: [byte];
+}
+
+table ANMBEntry {
+    entry_index: uint32;
+    entry_frames: [ANMBone];
+}
+
+table ANMB {
+    length: float;
+    unk_1: uint16;
+    unk_2: uint16;
+    anm_name: string;
+    anm_entries: [ANMBEntry];
+    anm_buffer: ANMBBuffer;
+}
+
+table NUANMB {
+    unk_0: uint8;
+    anm: ANMB;
+}
+
+root_type NUANMB;

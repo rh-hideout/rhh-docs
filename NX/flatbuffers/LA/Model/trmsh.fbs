@@ -59,7 +59,7 @@ table Influence {
 }
 
 table VertexAttribute {
-    attr_0: uint32 = 0;
+    attr_0: int32 = -1;
     attribute: Attribute = 0;
     attribute_layer: uint32 = 0; //Chooses which Color or UV layer to use
     type: Type;
@@ -80,7 +80,7 @@ table MaterialInfo {
     poly_offset: uint32;
     sh_unk3: uint32;
     material_name: string;
-    sh_unk4: uint32;
+    sh_unk4: int32 = -1;
 }
 
 table MeshShape {
@@ -96,7 +96,7 @@ table MeshShape {
     res3: uint32 = 0;
     mesh_vec: Vec4;
     influence: [Influence];
-    mesh_unk7: string; // Maybe shape name?
+    mesh_unk7: [uint32]; // Maybe shape name?
     mesh_name: string;
 }
 

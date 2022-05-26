@@ -16,7 +16,7 @@ Still using flatbuffers!
 - [x] TRANM - Animation
 - [x] TRAEF - Animation Effects
 - [x] TRCMA - Camera Animation
-- [ ] TRACR - Animation Channel Resource
+- [X] TRACR - Animation Channel Resource
 - [x] TRACN - Animation Channel Names
 - [x] TRACL - Animation Channel Layer
 - [x] TRACS - Animation Channel State

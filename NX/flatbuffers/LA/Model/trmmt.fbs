@@ -1,19 +1,39 @@
-table MaterialIndex {
+table MaterialSwitches {
     material_name: string;
-    material_index: uint8;
+    material_flag: uint8;
+}
+
+table MaterialMapper {
+    mesh_name: string;
+    material_name: string;
+    layer_name: string;
+}
+
+table MapperInfo {
+    count: uint32;
+}
+
+//Appears only on Arceus?
+table MaterialProperties {
+    name: string;
+    mappers: [MaterialMapper];
+    res_2: uint32;
+    unk_3: uint32;
+    mapper_info: MapperInfo;
+    unk_5: [uint32];
 }
 
 table MMT {
     name: string;
-    material_name: string;
-    material_switches: [MaterialIndex];
-    unk3: string;
+    material_name: [string];
+    material_switches: [MaterialSwitches];
+    material_properties: [MaterialProperties];
 } 
 
 table TRMMT {
-        res_0: uint32;
-        res_1: uint32;
-        unk_2: [MMT];
+    res_0: uint32;
+    res_1: uint32;
+    material: [MMT];
 }
 
 root_type TRMMT;

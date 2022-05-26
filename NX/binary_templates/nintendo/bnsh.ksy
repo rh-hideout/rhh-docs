@@ -9,6 +9,9 @@ meta:
   id: bnsh
   file-extension: bnsh
   endian: le
+  imports:
+    - nv50
+    - nvgpu5
 seq:
   - id: header
     type: header
@@ -299,7 +302,6 @@ types:
             pos: ofs_slot_array
             size: 4 * start_unordered
 
-#OLD
       shader_entry:
         seq:
           - id: unk
@@ -315,54 +317,14 @@ types:
           - id: reserved
             size: 0x20
         instances:
-          # Types are commented out so I can just dump blobs
-          # Mostly to test shader swapping....
           shader_reflection: 
             pos: ofs_shader_reflection
             size: len_shader_reflection
-            # type: reflection_file
+            type: nvgpu5
           shader_prog: 
             pos: ofs_shader_prog
             size: len_shader_prog
-            # type: prog_file
-
-      reflection_file:
-        seq:
-          - id: header
-            type: reflection_file_header
-            size: 0x6F0
-          - id: unk1
-            type: reflection_file_sec1
-            size: 0x88
-          - id: unk2
-            type: reflection_file_sec2
-            size: 0x50
-          - id: unk3
-            type: u8
-
-      reflection_file_header:
-        seq:
-          - id: magic
-            contents: [0x34, 0x12, 0x76, 0x98]
-  
-      reflection_file_sec1:
-        seq:
-          - id: unk0
-            type: u4
-          - id: unk1
-            type: u4
-
-      reflection_file_sec2:
-        seq:
-          - id: unk0
-            type: u4
-          - id: unk1
-            type: u4
-
-      prog_file:
-        seq:
-          - id: magic
-            contents: [0x78, 0x56, 0x32, 0x12]
+            type: nv50
 
       prog_resource:
         seq:
@@ -375,7 +337,6 @@ types:
           - id: ofs_reloc_prog
             type: u8
         instances:
-          #Note, not useful, better to go through shader entries
           prog_block:
             pos: ofs_prog
             size: len_prog
@@ -388,6 +349,7 @@ types:
         type: string_entry
         repeat: expr
         repeat-expr: count
+  
   string_entry:
     seq:
       - id: len_string
@@ -409,6 +371,7 @@ types:
         type: dictionary_node
         repeat: expr
         repeat-expr: count + 1
+  
   dictionary_node:
     seq:
       - id: index

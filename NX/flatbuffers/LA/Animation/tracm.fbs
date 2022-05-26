@@ -1,61 +1,60 @@
 
-table TrackConfig {
+file_extension "tracm";
+
+union TrackFlag {
+    TrackFlag_Bool,
+}
+
+table TrackFlag_Bool {
+    value: bool;
+}
+
+table TrackFlagsInfo {
+    values: TrackFlag;
+}
+
+table TrackFlags {
     res_0: uint32;
-    duration: uint32;
-    framerate: uint32;
-}
-
-table TrackUnk2Unk1 {
-    unk_0: uint8;
-}
-
-table TrackUnk2 {
-    unk_0: uint8; //Always 1?
-    unk_1: TrackUnk2Unk1;
-}
-
-table TrackUnk {
-    res_0: uint32; //Never used?
-    res_1: uint32; //Never used?
-    unk_2: TrackUnk2;
+    res_1: uint32;
+    info: TrackFlagsInfo;
 }
 
 table TrackMaterialValue {
-    unk_0: float;
-    unk_1: float;
-    res_2: uint32;
-    res_3: uint32;
-    unk_4: uint32;
+    time: float;
+    value: float;
+    config_0: uint32;
+    config_1: uint32;
+    config_2: uint32;
 }
 
-table TrackMaterialInitValueList {
+table TrackMaterialValueList {
     values: [TrackMaterialValue];
 }
 
 table TrackMaterialInit {
     name: string;
-    list: TrackMaterialInitValueList;
+    list: TrackMaterialValueList;
 }
 
-table TrackMaterialLayers {
-	layer_1: TrackMaterialInitValueList;
-	layer_2: TrackMaterialInitValueList;
-	layer_3: TrackMaterialInitValueList;
-	layer_4: TrackMaterialInitValueList;
+table TrackMaterialChannels {
+	red: TrackMaterialValueList;
+	green: TrackMaterialValueList;
+	blue: TrackMaterialValueList;
+	alpha: TrackMaterialValueList;
 }
 
-table TrackMaterialFrames {
+table TrackMaterialAnim {
     name: string;
-    list: TrackMaterialLayers;
+    list: TrackMaterialChannels;
 }
 
 table TrackMaterial {
     name: string;
     init_values: [TrackMaterialInit];
-    layer_values: [TrackMaterialFrames];
+    anim_values: [TrackMaterialAnim];
 }
 
-table TrackMaterialList {
+table TrackMaterialTimeline {
     res_0: uint32;
     res_1: uint32;
     material_track: [TrackMaterial];
@@ -68,15 +67,21 @@ table Track {
     res_1: uint32; //Never used
     res_2: uint32; //Never used
     res_3: uint32; //Never used
-    material_list: TrackMaterialList;
-    unk: TrackUnk;
+    material_animation: TrackMaterialTimeline;
+    material_flags: TrackFlags;
+}
+
+table TrackConfig {
+    res_0: uint32;
+    duration: uint32;
+    framerate: uint32;
 }
 
 table TRACM {
     config: TrackConfig;
     tracks: [Track];
-    len_1: uint8; //Related to length of unk_1
-    len_2: uint8; //Related to length of unk_1
+    len_1: uint8; //Related to length of tracks?
+    len_2: uint8; //Related to length of tracks?
 }
 
 root_type TRACM;

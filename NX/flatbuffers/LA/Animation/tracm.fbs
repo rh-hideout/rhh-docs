@@ -1,0 +1,82 @@
+
+table TrackConfig {
+    res_0: uint32;
+    duration: uint32;
+    framerate: uint32;
+}
+
+table TrackUnk2Unk1 {
+    unk_0: uint8;
+}
+
+table TrackUnk2 {
+    unk_0: uint8; //Always 1?
+    unk_1: TrackUnk2Unk1;
+}
+
+table TrackUnk {
+    res_0: uint32; //Never used?
+    res_1: uint32; //Never used?
+    unk_2: TrackUnk2;
+}
+
+table TrackMaterialValue {
+    unk_0: float;
+    unk_1: float;
+    res_2: uint32;
+    res_3: uint32;
+    unk_4: uint32;
+}
+
+table TrackMaterialInitValueList {
+    values: [TrackMaterialValue];
+}
+
+table TrackMaterialInit {
+    name: string;
+    list: TrackMaterialInitValueList;
+}
+
+table TrackMaterialLayers {
+	layer_1: TrackMaterialInitValueList;
+	layer_2: TrackMaterialInitValueList;
+	layer_3: TrackMaterialInitValueList;
+	layer_4: TrackMaterialInitValueList;
+}
+
+table TrackMaterialFrames {
+    name: string;
+    list: TrackMaterialLayers;
+}
+
+table TrackMaterial {
+    name: string;
+    init_values: [TrackMaterialInit];
+    layer_values: [TrackMaterialFrames];
+}
+
+table TrackMaterialList {
+    res_0: uint32;
+    res_1: uint32;
+    material_track: [TrackMaterial];
+    unk_3: uint8; //maybe track length related?
+    unk_4: uint8; //maybe track length related?
+}
+
+table Track {
+    track_path: string;
+    res_1: uint32; //Never used
+    res_2: uint32; //Never used
+    res_3: uint32; //Never used
+    material_list: TrackMaterialList;
+    unk: TrackUnk;
+}
+
+table TRACM {
+    config: TrackConfig;
+    tracks: [Track];
+    len_1: uint8; //Related to length of unk_1
+    len_2: uint8; //Related to length of unk_1
+}
+
+root_type TRACM;

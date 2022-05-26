@@ -6,6 +6,8 @@ Still using flatbuffers!
 - [x] TRMDL - Model
 - [x] TRMSH - Mesh
 - [x] TRMTR - Material
+- [x] TRMMT - Material Table?
+    - For modifying Arceus Colors, need to export embedded tracm's from the byte buffers
 - [x] TRMBF - MeshBuffer
 - [x] TRSKL - Skeleton
 - [x] TRPOKECFG - Pokemon Config (Inframe related)

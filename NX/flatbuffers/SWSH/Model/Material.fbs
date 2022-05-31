@@ -136,8 +136,8 @@ table Material {
 
   //Int Params
   light_set_num: uint32 = 0;
-  blend_mode: uint32 = 0;
-  cull_mode: uint32 = 0;
+  blend_mode: Blend_Mode = 0;
+  cull_mode: Cull_Mode = 0;
   vertex_shader_file_id: uint32 = 0;
   geom_shader_file_id: uint32 = 0;
   frag_shader_file_id: uint32 = 0;
@@ -153,17 +153,9 @@ table Material {
   cast_shadow: uint8 = 0;
   self_shadow: uint8 = 0;
   texture_alpha_test: uint8 = 0;
-
-  //ew231_fol01, ew280_hand, ew280_tail_B and ew280_tail
-  //When filled, it's 7, not enough info here
-  DepthComparisonFunction: Unk = 0;
+  DepthComparisonFunction: DepthComparison = 0;
 
   StaticParam: UberShaderSettings;
-
-  //Found in eg762_chair and eg773_at_mashroom01
-  //Values range from 0xFFFFFF9C, 0xFFFFFF38, 0xFFFFFFCE, 0xFFFFFFEC
-  //And also 2, 5, 100, 200, 300, 400, 500
-  //So it's some kind of signed int
   depth_bias: int32;
   f18: float;
   f19: float;

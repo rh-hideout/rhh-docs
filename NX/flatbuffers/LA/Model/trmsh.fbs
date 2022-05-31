@@ -47,6 +47,13 @@ struct Vec3 {
     z:float;
 }
 
+struct Sphere {
+    x:float;
+    y:float;
+    z:float;
+    radius:float;
+}
+
 table BoundingBox {
     min: Vec3;
     max: Vec3;
@@ -94,7 +101,7 @@ table MeshShape {
     res1: uint32 = 0;
     res2: uint32 = 0;
     res3: uint32 = 0;
-    mesh_vec: Vec4;
+    clip_sphere: Sphere;
     influence: [Influence];
     mesh_unk7: [uint32]; // Maybe shape name?
     mesh_name: string;

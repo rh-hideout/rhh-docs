@@ -1,7 +1,9 @@
-struct RGB8 {
-    r: uint8;
-    g: uint8;
-    b: uint8;
+table INS {
+    //Yup, they could've used a union to define instance types 
+    //Such as Scale Rotate Translate Buffers
+    //But nope, they just went with a byte buffer
+    //Good luck parsing that later
+    byte_buffer: [uint8];
 }
 
 table TRINS{
@@ -9,6 +11,6 @@ table TRINS{
         unk_1: uint32 = 0x1;
         unk_2: uint32 = 0x2;
         res_3: uint32 = 0x0;
-        unk_4: RGB8;
+        unk_4: INS;
 }
 root_type TRINS;

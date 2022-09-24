@@ -150,10 +150,8 @@ types:
       form_data:
         seq:
         - id: forme_stat_index
-          type: u1
-        - id: forme_sprite
-          type: u1
-        - id: forme_index
+          type: u2
+        - id: forme_count
           type: u1
         - id: color
           type: b6

@@ -1,3 +1,7 @@
+namespace Hayabusa.Animation;
+
+file_extension "traef";
+
 union EffectValue {
     EffectValue_Int,
     EffectValue_Float,
@@ -29,8 +33,8 @@ table Effect {
 table AnimationEffect {
         res_0: uint32;
         path: string;
-        maybe_start: uint32;
-        maybe_duration: uint32;
+        start: uint32;
+        duration: uint32;
         effects: [Effect];
 }
 

@@ -1,3 +1,7 @@
+namespace Hayabusa.Animation;
+
+file_extension "tracr";
+
 table AnimationResource {
     filename: string;
 }

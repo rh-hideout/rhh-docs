@@ -1,3 +1,7 @@
+namespace Hayabusa.Animation;
+
+file_extension "tranm";
+
 struct sVec2 {
   u: int16;
   v: int16;
@@ -31,17 +35,6 @@ struct Transform {
   scale:Vec3;
   rotate:Vec4;
   translate:Vec3;
-}
-
-table AnimationInfo {
-    does_loop: uint32;
-    animation_count: uint32;
-    animation_rate: uint32;
-}
-
-table BoneInit {
-    isInit:uint32;
-    transform:Transform; 
 }
 
 union VectorTrack { FixedVectorTrack, DynamicVectorTrack,  Framed16VectorTrack, Framed8VectorTrack }
@@ -85,16 +78,28 @@ table Framed8RotationTrack {
 }
 
 table BoneTrack {
-      bone_name:string;
-      scale:VectorTrack;
-      rotate:RotationTrack;
-      translate:VectorTrack;
+    bone_name:string;
+    scale:VectorTrack;
+    rotate:RotationTrack;
+    translate:VectorTrack;
+}
+
+table AnimationInfo {
+    does_loop: uint32;
+    animation_count: uint32;
+    animation_rate: uint32;
+}
+
+table BoneInit {
+    isInit:uint32;
+    transform:Transform; 
 }
 
 table BoneAnimation {
     tracks:[BoneTrack];
     initData:BoneInit;
 }
+
 table TRANM {
     info: AnimationInfo;
     track: BoneAnimation;

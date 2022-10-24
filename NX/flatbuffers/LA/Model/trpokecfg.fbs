@@ -1,4 +1,8 @@
-table TRPOKECFG{
+namespace Hayabusa.Model;
+
+file_extension "trpokecfg";
+
+table TRPOKECFG {
         unk_0: uint8;
         unk_1: float;
         unk_2: float;

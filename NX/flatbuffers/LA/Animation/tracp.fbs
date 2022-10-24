@@ -1,3 +1,7 @@
+namespace Hayabusa.Animation;
+
+file_extension "tracp";
+
 table Animation {
     name: string;
     res_1: uint32 = 0;

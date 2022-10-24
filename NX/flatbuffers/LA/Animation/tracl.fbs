@@ -1,3 +1,7 @@
+namespace Hayabusa.Animation;
+
+file_extension "tracl";
+
 table ChannelName{
         name: string;
 }

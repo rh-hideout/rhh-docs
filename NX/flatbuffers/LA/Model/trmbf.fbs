@@ -1,3 +1,5 @@
+namespace Hayabusa.Model;
+
 file_extension "trmbf";
 
 table Indexes {
@@ -8,14 +10,14 @@ table Vertices {
     list: [ubyte];
 }
 
-table Polygon {
+table Buffer {
     index_buffer: [Indexes];
     vertex_buffer: [Vertices];
 }
 
 table TRMBF {
     unused: uint32;
-    polygons:[Polygon];
+    buffers:[Buffer];
 }
 
 root_type TRMBF;

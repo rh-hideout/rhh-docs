@@ -1,3 +1,5 @@
+namespace Hayabusa.Model;
+
 file_extension "trmtr";
 
 struct RGBA {
@@ -8,13 +10,11 @@ struct RGBA {
 }
 
 enum UVWrapMode: uint32 {
-        WRAP = 0,
-        CLAMP = 1,
-        MIRROR = 2,
-        BORDER = 3,
-        MIRROR_ONCE = 4,
-        UNK6 = 6,
-        UNK7 = 7,
+        //Time to test these as bit fields?
+        WRAP = 0, //0000
+        CLAMP = 1, //0001
+        MIRROR = 6, //0110
+        MIRROR_ONCE = 7, //0111
 }
 
 table SamplerState {
@@ -33,49 +33,47 @@ table SamplerState {
         border_color: RGBA;
 }
 
-table ColorValue {
+table Float4Parameter {
         color_name: string;
         color_value: RGBA; 
 }
 
-
-table FloatValue {
+table FloatParameter {
         float_name: string;
         float_value: float;
 }
 
-table IntValue {
+table IntParameter {
         int_name: string;
-        int_value: uint32;
+        int_value: int32 = -1;
 }
 
-table StringValue {
+table StringParameter {
         string_name: string;
         string_value: string;
 }
 
 table Shader {
         shader_name: string;
-        shader_values: [StringValue];
+        shader_values: [StringParameter];
 }
 
 table Texture  {
         texture_name: string;
         texture_file: string;
-        texture_slot: uint32;
+        texture_slot: uint32 = 0;
 }
 
-table ByteTable {
-        value: uint8 = 0x2; //Only pm0448 has it as 0x1
+table Byte_Extra {
+        //Only pm0448 has it as 0x0 in Transparent Shader
+        value: int8 = -1; 
 }
 
-table IntTable {
-        res_0: uint32; //Never present
-        unk_1: uint32 = 0x2;
-}
-
-table DummyTable {
-
+table Int_Extra {
+        res_0: uint32;
+        //0 when Transparent
+        //1 when NonDirectional
+        value: int32 = -1;
 }
 
 table Material{
@@ -83,17 +81,17 @@ table Material{
         shaders: [Shader]; 
         textures: [Texture];
         samplers: [SamplerState]; 
-        float_values: [FloatValue];
+        float_parameter: [FloatParameter];
         unk_5: string; //Always empty
-        light: [ColorValue];
-        color: [ColorValue];
+        float4_light_parameter: [Float4Parameter];
+        float4_parameter: [Float4Parameter];
         unk_8: string; //Always empty
-        int_values: [IntValue];
+        int_parameter: [IntParameter];
         unk_10: string; //Always empty
         unk_11: string; //Always empty
         unk_12: string; //Always empty
-        byte_value: ByteTable;
-        uint_value: IntTable;
+        byte_extra: Byte_Extra;
+        int_extra: Int_Extra;
         alpha_type: string;
 }
 

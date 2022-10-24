@@ -1,3 +1,7 @@
+namespace Hayabusa.Animation;
+
+file_extension "trbik";
+
 struct Vec3 {
     x: float;
     y: float;

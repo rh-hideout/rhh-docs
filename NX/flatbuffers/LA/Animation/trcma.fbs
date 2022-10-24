@@ -1,10 +1,45 @@
+namespace Hayabusa.Animation;
+
+file_extension "trcma";
+
+struct sVec3 {
+    x: uint16;
+    y: uint16;
+    z: uint16;
+}
+
 struct Vec3 {
     x: float; 
     y: float;
     z: float;
 }
 
-union VectorTrack { FixedVectorTrack, DynamicVectorTrack,  Framed16VectorTrack, Framed8VectorTrack }
+union RotationTrack { FixedRotationTrack, DynamicRotationTrack, Framed16RotationTrack, Framed8RotationTrack }
+
+table FixedRotationTrack {
+    co:sVec3;
+}
+
+table DynamicRotationTrack {
+    co:[sVec3];
+}
+
+table Framed16RotationTrack {
+    frames:[uint16];
+    co:[sVec3];
+}
+
+table Framed8RotationTrack {
+    frames:[uint8];
+    co:[sVec3];
+}
+
+union VectorTrack { 
+    FixedVectorTrack, 
+    DynamicVectorTrack,  
+    Framed16VectorTrack, 
+    Framed8VectorTrack 
+}
 
 table FixedVectorTrack {
   co: Vec3;
@@ -63,8 +98,8 @@ table CameraAnim1 {
 }
 
 table CameraAnim2 {
-    unk_0: VectorTrack;
-    unk_1: VectorTrack;
+    rotation: RotationTrack;
+    translation: VectorTrack;
     unk_2: VectorTrack;
     unk_3: VectorTrack;
     unk_4: VectorTrack;

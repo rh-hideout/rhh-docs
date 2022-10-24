@@ -1,3 +1,5 @@
+namespace Hayabusa.Model;
+
 file_extension "trskl";
 
 struct Vec3 {
@@ -64,7 +66,7 @@ table TRSKL {
         transform_nodes: [TransformNode];
         bones: [Bone];
         iks: [IKControl];
-        unk_4: uint32;
+        rig_offset: uint32;
 }
 
 root_type TRSKL;

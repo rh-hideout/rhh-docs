@@ -1,3 +1,5 @@
+namespace Hayabusa.Model;
+
 file_extension "trmdl";
 
 struct Vec3 {

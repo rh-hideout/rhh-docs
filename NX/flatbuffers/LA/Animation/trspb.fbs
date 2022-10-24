@@ -1,3 +1,7 @@
+namespace Hayabusa.Animation;
+
+file_extension "trspb";
+
 table hkSpringBone {
     path: string;
     unk_0: uint32;

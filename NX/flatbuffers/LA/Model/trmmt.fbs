@@ -1,3 +1,5 @@
+namespace Hayabusa.Model;
+
 file_extension "trmmt";
 
 table MaterialSwitches {
@@ -12,11 +14,10 @@ table MaterialMapper {
 }
 
 table EmbeddedTRACM {
-    //Best to extract this with a script
-    //Rather than flatc
     bytebuffer: [uint8];
 }
 
+//Appears only on Arceus?
 table MaterialProperties {
     name: string;
     mappers: [MaterialMapper];

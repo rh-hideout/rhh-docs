@@ -1,5 +1,10 @@
+namespace Hayabusa.PokemonLib;
 
-table PersonalData{
+file_extension "perbin";
+
+//Thanks to pkNX team for this one
+
+table PersonalData {
         species: uint16;
         form: uint16 = 0x1;
 

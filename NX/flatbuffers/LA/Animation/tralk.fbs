@@ -1,13 +1,17 @@
+namespace Hayabusa.Animation;
+
+file_extension "tralk";
+
 struct Vec3 {
     x: float;
     y: float;
     z: float;
 }
 
-table UnkTable_0x4ee{
-        name: string;
-        unk_1:Vec3;
-        unk_2:Vec3;
+table LookAt{
+        channel_name: string;
+        min_rot:Vec3;
+        max_rot:Vec3;
         unk_3: uint32;
         unk_4: float;
         unk_5: float;
@@ -26,16 +30,16 @@ table UnkTable_0x4ee{
         unk_18: uint8 = 0x1;
         unk_19: [float];
         unk_20: float;
-        unk_21: [string];
+        track_name: [string];
         unk_22: float;
 }
 table TRALK {
         res_0: uint32 = 0x0;
-        unk_1: [UnkTable_0x4ee];
+        unk_1: [LookAt];
         unk_2: uint32 = 0x1;
         unk_3: uint8 = 0x1;
         unk_4: float;
-        unk_5: string;
+        bone_name: string;
 }
 
 root_type TRALK;

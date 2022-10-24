@@ -1,3 +1,6 @@
+namespace Hayabusa.Animation;
+
+file_extension "tracs";
 
 enum ConditionType : uint32 {
     Less = 0,

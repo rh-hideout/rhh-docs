@@ -1,3 +1,7 @@
+namespace Hayabusa.Terrain;
+
+file_extension "trtrr";
+
 struct Vec4 {
     x: float;
     y: float;
